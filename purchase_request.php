@@ -1,7 +1,27 @@
 <?php
+require('dbconnection.php');
+$msg="";
+$pid=$_GET['prod_id'];
+$exec_query=mysqli_query($connection,"SELECT * FROM register_mobile_phone  WHERE mobile_id='$pid'");
+$row=mysqli_fetch_array($exec_query);
 
+if(isset($_POST['btn_update'])){
+    $mobile_name=$_POST['_mobilename'];
+    $brand=$_POST['_brand'];
+    $rate=$_POST['_rate'];
+    $targetdirectory="images/";
+    $targetfile=$targetdirectory.basename($_FILES['image']['name']);
+    move_uploaded_file($_FILES['image']['tmp_name'],$targetfile);
+    $query="UPDATE register_mobile_phone SET model_name='$mobile_name',brand='$brand',rate='$rate',product_image='$targetfile' WHERE mobile_id='$pid'";
+    $exec_query=mysqli_query($connection,$query);
+    if($exec_query){
+        header('location:manage_product.php');
+    }
+    else{
+        echo "error";
+    }
 
-?>
+}
 
 <!DOCTYPE html>
 <html lang="en">
