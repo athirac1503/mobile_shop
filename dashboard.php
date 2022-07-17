@@ -1,10 +1,3 @@
-<?php
-require("dbconnection.php");
-$qurey="SELECT * FROM user_registration";
-$exec_query=mysqli_query($connection,$qurey);
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,31 +11,7 @@ $exec_query=mysqli_query($connection,$qurey);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
 </head>
 <style>
-    body{
-            background:rgba(79, 158, 125, 0.726);
-        }
-     .box{
-            background:rgba(79, 158, 125, 0.726);
-            height:500px;
-            width:900px;
-            margin-left:80px;
-            margin-top:100px;
-            border-radius:10px
-        }
-        h1{
-            text-align:center;
-            padding-top:20px;
-            font-family: 'Times New Roman', Times, serif;
-
-
-        }
-        table{
-            width:200px;
-            margin-bottom:50px;
-            border:solid 1px black ;
-
-        }
-        .box1{
+    .box1{
         background-color:black;
         width:20%;
         height:650px;
@@ -73,9 +42,15 @@ $exec_query=mysqli_query($connection,$qurey);
     .b4:hover{
         background-color:rgba(63, 62, 61, 0.87);
     }
+    h1{
+        font-size:100px;
+        font-family: 'Times New Roman', Times, serif;
+        text-align:center;
+        margin-top:250px;   
+    }
 </style>
 <body>
-<div class="row">
+    <div class="row">
         <div class="col-md-4 box1">
             <div class="row">
             <div class="col-md-12 b1">
@@ -94,41 +69,9 @@ $exec_query=mysqli_query($connection,$qurey);
 
         </div>
         <div class="col-md-8 box2">
-        <div class="box">
-   <h1>REGISTERD CUSTOMERS</h1>
-    <table class="table" border=1>
-        <thead>
-            <tr>
-                <th>CUSTOMER ID</th>
-                <th>NAME</th>
-                <th>EMAIL</th>
-                <th>CONTACT</th>
-                
-            </tr>
-        </thead>
-        <tbody>
-        <?php
-        if(mysqli_num_rows($exec_query)>0){
-            while($row=mysqli_fetch_assoc($exec_query)){
-
-            ?>
-            <tr>
-                <td><?php echo $row['user_id'] ?></td>
-                <td><?php echo $row['u_name'] ?></td>
-                <td><?php echo $row['email'] ?></td>
-                <td><?php echo $row['contact'] ?></td>
-
-            </tr>
-            <?php
-
-            }
-        }
-        ?>
-        </tbody>
-    </table>
-   </div>
+            <h1>Welcome admin</h1>
         </div>
     </div>
-   
+    
 </body>
 </html>

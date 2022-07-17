@@ -1,27 +1,6 @@
 <?php
-require('dbconnection.php');
-$msg="";
-$pid=$_GET['prod_id'];
-$exec_query=mysqli_query($connection,"SELECT * FROM register_mobile_phone  WHERE mobile_id='$pid'");
-$row=mysqli_fetch_array($exec_query);
-
-if(isset($_POST['btn_update'])){
-    $mobile_name=$_POST['_mobilename'];
-    $brand=$_POST['_brand'];
-    $rate=$_POST['_rate'];
-    $targetdirectory="images/";
-    $targetfile=$targetdirectory.basename($_FILES['image']['name']);
-    move_uploaded_file($_FILES['image']['tmp_name'],$targetfile);
-    $query="UPDATE register_mobile_phone SET model_name='$mobile_name',brand='$brand',rate='$rate',product_image='$targetfile' WHERE mobile_id='$pid'";
-    $exec_query=mysqli_query($connection,$query);
-    if($exec_query){
-        header('location:manage_product.php');
-    }
-    else{
-        echo "error";
-    }
-
-}
+        
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -30,13 +9,17 @@ if(isset($_POST['btn_update'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
 </head>
 <style>
      .box{
-            background:pink;
+            background:rgba(79, 158, 125, 0.726);
             length:500px;
             width:800px;
-            margin-left:280px;
+            margin-left:80px;
             margin-top:100px;
             border-radius:10px
         }
@@ -46,13 +29,64 @@ if(isset($_POST['btn_update'])){
 
         }
         table{
-            margin-left:100px;
+            margin-left:160px;
             margin-bottom:50px;
 
         }
+        .box1{
+        background-color:black;
+        width:20%;
+        height:650px;
+    }
+    .box2{
+        background-color:rgba(79, 158, 125, 0.726);
+        width:80%;
+        height:650px;
+    }
+    a{
+        text-decoration:none;
+        color:#fff;
+    }
+    .b1,.b2,.b3,.b4{
+        height:150px;
+        padding-top:60px;
+        padding-left:50px;
+    }
+    .b1:hover{
+        background-color:rgba(63, 62, 61, 0.87);
+    }
+    .b2:hover{
+        background-color:rgba(63, 62, 61, 0.87);
+    }
+    .b3:hover{
+        background-color:rgba(63, 62, 61, 0.87);
+    }
+    .b4:hover{
+        background-color:rgba(63, 62, 61, 0.87);
+    }
+
 </style>
 <body>
-   <div class="box">
+<div class="row">
+        <div class="col-md-4 box1">
+            <div class="row">
+            <div class="col-md-12 b1">
+                    <a href="registerd_customer.php">Customer details</a>
+                </div>
+                <div class="col-md-12 b2">
+                    <a href="register_mobilephone.php">Register mobile phone</a>
+                </div>
+                <div class="col-md-12 b3">
+                    <a href="manage_product.php">Manage Product</a>
+                </div>
+                <div class="col-md-12 b4">
+                    <a href="purchase_request.php">Purchase request</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-8 box2">
+        <div class="box">
    <h1>PURCHASE REQUEST</h1>
     <table border=1>
         <thead>
@@ -67,5 +101,8 @@ if(isset($_POST['btn_update'])){
         </thead>
     </table>
    </div>
+        </div>
+    </div>
+   
 </body>
 </html>

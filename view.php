@@ -68,25 +68,20 @@ $exec_query=mysqli_query($connection,$qurey);
     </div>
     <div>
         <form action="" method="POST">
-        <?php
+            <div class="row">
+            <?php
                 if(mysqli_num_rows($exec_query)>0){
                 while($row=mysqli_fetch_assoc($exec_query)){
             ?>
-           <div class="row">
-           
-             <div class="col-md-4">
-                <img src="<?php echo $row['product_image']; ?>" class="card-img-top" alt="..." width="160px" height="250">
-                <div class="card-body">
-                    <h5 class="card-title"><?php echo $row['model_name']?></h5>
-                    <p class="card-text"><?php echo $row['rate'] ?></p>
-                    <a id="a1" href="add_product.php?prod_id=<?php echo $row['mobile_id'];?>"><button id="b3" onclick="alert('done');" type="submit">Purchase</button></a>
+                <div class="col-md-4">
+                    <img src="<?php echo $row['product_image']; ?>" alt="" width="200px" height="200px">
+                    <p><?php echo $row['model_name'] ?></p>
+                    <p><?php echo $row['rate'] ?></p>
+                    <button>Purchase </button>
                 </div>
-             </div> 
-            </div
-          
-            <?php 
-
-                 }
+            </div>
+            <?php
+                }
             }
             ?>
         
