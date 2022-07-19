@@ -1,4 +1,12 @@
 <?php
+    require('dbconnection.php');
+    $msg="";
+    session_start();
+    if(isset($_SESSION['_user_id'])){
+        $id=$_SESSION['_user_id'];
+        echo $id;
+
+    }
         
 ?>
 
@@ -99,6 +107,19 @@
                 <th>VIEW MORE</th>
             </tr>
         </thead>
+        <tbody>
+
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+            </tr>
+            
+
+          
+        </tbody>
     </table>
    </div>
         </div>

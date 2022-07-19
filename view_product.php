@@ -3,6 +3,9 @@
     session_start();
     if(isset($_SESSION['_user_id'])){
         $id=$_SESSION['_user_id'];
+        $qurey="SELECT * FROM user_registration";
+        $exec_query=mysqli_query($connection,$qurey);
+        echo $id;
 
     }
     else{
@@ -64,6 +67,7 @@ $exec_query=mysqli_query($connection,$qurey);
 </style>
 <body>
     <div class="b1">
+        <h1>hiiii  </h1>
         <a  href="user_login.php"><button class="b2">Home</button></a>
     </div>
     <div>
@@ -79,7 +83,7 @@ $exec_query=mysqli_query($connection,$qurey);
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $row['model_name']?></h5>
                     <p class="card-text"><?php echo $row['rate'] ?></p>
-                    <a id="a1" href="add_product.php?prod_id=<?php echo $row['mobile_id'];?>"><button id="b3" onclick="alert('done');" type="submit">Purchase</button></a>
+                    <a id="a1" href="add_product.php?prod_id=<?php echo $row['mobile_id'];?>"><button id="b3" onclick="alert('your purchase is done');" type="submit">Purchase</button></a>
                 </div>
              </div> 
             </div
