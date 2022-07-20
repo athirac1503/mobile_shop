@@ -103,25 +103,6 @@ if(isset($_POST['btn_update'])){
             <label for="exampleFormControlTextarea1" class="form-label">Upload image</label>
             <input type="file" class="form-control" name="image" id="exampleFormControlInput4" placeholder="Upload Image" value="<?php echo $row['product_image'] ?>">
         </div>
-
-
-
-
-
-
-        <!-- <div class="mb-3">
-            <label for="" class="form-label">Mobile name</label>
-            <input type="text" class="form-control" name="_mobilename"id="exampleFormControlInput1" placeholder="Mobile Name" value="<?php echo $row[1] ?>">
-        </div>
-        <div class="mb-3">
-            <input type="text" class="form-control" name="_brand" id="exampleFormControlInput2" placeholder="Brand" value="<?php echo $row[2] ?>">
-        </div>
-        <div class="mb-3">
-            <input type="text" class="form-control" name="_rate" id="exampleFormControlInput3" placeholder="Rate" value="<?php echo $row[3] ?>">
-        </div>
-        <div class="mb-3">
-            <input type="file" class="form-control" name="image" id="exampleFormControlInput4" placeholder="Upload Image" value="<?php echo $row['product_image'] ?>">
-        </div> -->
         <button type="submit" name="btn_update">Update</button>
     </div>
     <p><?php echo $msg ?></p>

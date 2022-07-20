@@ -83,7 +83,7 @@ $exec_query=mysqli_query($connection,$qurey);
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $row['model_name']?></h5>
                     <p class="card-text"><?php echo $row['rate'] ?></p>
-                    <a id="a1" href="add_product.php?prod_id=<?php echo $row['mobile_id'];?>"><button id="b3" onclick="alert('your purchase is done');" type="submit">Purchase</button></a>
+                    <a id="a1" href="purchase_request.php?prod_id=<?php echo $row['mobile_id'];?> u_id=<?php echo $row['user_id'];?>"><button id="b3" onclick="alert('your purchase is done');" type="submit">Purchase</button></a>
                 </div>
              </div> 
             </div

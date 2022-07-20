@@ -1,14 +1,14 @@
 <?php
-    require('dbconnection.php');
     $msg="";
-    session_start();
-    if(isset($_SESSION['_user_id'])){
-        $id=$_SESSION['_user_id'];
-        echo $id;
+    $pid=$_GET['prod_id'];
+    $uid=$_GET['u_id'];
+    $exec_query=mysqli_query($connection,"SELECT * FROM register_mobile_phone  WHERE mobile_id='$pid'");
+    $exec_query1=mysqli_query($connection,"SELECT * FROM user_registration WHERE user_id='$uid'");
+    $row=mysqli_fetch_array($exec_query);
+    $row=mysqli_fetch_array($exec_query1);
 
-    }
         
-?>
+?>9815
 
 <!DOCTYPE html>
 <html lang="en">
@@ -109,13 +109,23 @@
         </thead>
         <tbody>
 
+        <?php
+        if(mysqli_num_rows($exec_query&&$exec_query1)>0){
+            while($row=mysqli_fetch_assoc($exec_query&&$exec_query1)){
+
+            ?>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td><?php echo $row['user_id'] ?></td>
+                <td><?php echo $row['u_name'] ?></td>
+                <td><?php echo $row['email'] ?></td>
+                <td><?php echo $row['contact'] ?></td>
 
             </tr>
+            <?php
+
+            }
+        }
+        ?>
             
 
           

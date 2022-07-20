@@ -23,6 +23,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> 
+
     <style>
        body{
             background:rgba(79, 158, 125, 0.726);
@@ -98,6 +100,9 @@
     .b4:hover{
         background-color:rgba(63, 62, 61, 0.87);
     }
+    #error_msg{
+        margin-left:80px
+    }
     </style>
 </head>
 
@@ -128,6 +133,7 @@
         <div class="mb-3">
             <input type="text" class="form-control" name="_mobilename"id="mobile1" placeholder="Mobile Name">
             <span id="_name"></span>
+            <div id="error_msg"></div><br>
         </div>
         <div class="mb-3">
             <input type="text" class="form-control" name="_brand" id="brand1" placeholder="Brand">
@@ -153,68 +159,23 @@
         </div>
     </div>
 
-</body> 
-<!-- <script>
-     function validate(){
-        var status=1
-        var txt_name=document.getElementById("mobile1")
-        var txt_brand=document.getElementById("brandl1")
-        var txt_rate=document.getElementById("rate1")
-        var txt_image=document.getElementById("image1")          
-
-        if(txt_name.value=="")
-        {
-            document.getElementById("_name").innerHTML="Please Enter Mobile Name "
-            document.getElementById("_name").style.color="red"
-            txt_name.style.borderColor = "red"
-            status=0
-        }
-        else{
-            document.getElementById("_name").innerHTML=""
-            txt_name.style.borderColor = ""
-            status=1
-        }
-        if(txt_brand.value=="")
-        {
-            document.getElementById("_brand").innerHTML="Please Enter Brand "
-            document.getElementById("_brand").style.color="red"
-            txt_brand.style.borderColor = "red"
-            status=0
-        }
-        else{
-            document.getElementById("_brand").innerHTML=""
-            txt_brand.style.borderColor = ""
-            status=1
-        }
-        if(txt_rate.value=="")
-        {
-            document.getElementById("_rate").innerHTML="Please Enter Rate "
-            document.getElementById("_rate").style.color="red"
-            txt_rate.style.borderColor = "red"
-            status=0
-        }
-        else{
-            document.getElementById("_rate").innerHTML=""
-            txt_rate.style.borderColor = ""
-            status=1
-        }
-        if(txt_image.value=="")
-        {
-            document.getElementById("_image").innerHTML="Please Upload Image "
-            document.getElementById("_image").style.color="red"
-            txt_image.style.borderColor = "red"
-            status=0
-        }
-        else{
-            document.getElementById("_image").innerHTML=""
-            txt_image.style.borderColor = ""
-            status=1
-        }
-        
-        
-        
-
-        
-    }
-</script> -->
+</body>  
 </html>
+<script>
+    $(document).ready(function(){
+            $('#mobile1').keyup(function(){
+                var mobilename=$('#mobile1').val();
+                $.ajax({
+                    type:"POST",
+                    url:"check_mobilename.php",
+                    data:{
+                        mobile_name:mobilename
+                    },
+                    success:function(response){
+                        $('#error_msg').html(response);
+                    }//call back function
+                })
+            })
+
+        });
+</script>
